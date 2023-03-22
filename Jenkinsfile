@@ -3,7 +3,7 @@ pipeline {
 	
   environment {
     DOCKERHUB_CREDENTIALS = credentials('7c806c30-6228-4300-9ae4-a3870720edfb')
-    REMOTE_SERVER = '44.204.246.246/'
+    REMOTE_SERVER = '44.204.246.246'
     REMOTE_USER = 'ubuntu' 	  	  
   }
 	
@@ -80,8 +80,8 @@ pipeline {
         script {
           sshagent(credentials: ['awscred']) {
           sh "ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_SERVER} 'docker stop javaApp || true && docker rm javaApp || true'"
-	  sh "ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_SERVER} 'docker pull palakbhawsar/javawebapp'"
-          sh "ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_SERVER} 'docker run --name javaApp -d -p 8081:8081 palakbhawsar/javawebapp'"
+	  sh "ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_SERVER} 'docker pull remo1234/javaapp'"
+          sh "ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_SERVER} 'docker run --name javaApp -d -p 8081:8081 remo1234/javaapp'"
           }
         }
       }
